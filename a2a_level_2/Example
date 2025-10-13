@@ -1,0 +1,20 @@
+High-level relationship
+Client (A2AClient): Sends JSON-RPC tasks/send requests over HTTP to the server and returns a Task result.
+Server (A2AServer): Accepts POST requests, validates JSON-RPC, and dispatches to the Task Manager.
+Task Manager (AgentTaskManager): Extracts the user query, invokes the TellTime agent, updates the task status/history, and returns a structured response.
+TellTime Agent (TellTimeAgent): Runs a Gemini-based agent to produce the response text (current time).
+End-to-end scenario (example)
+User wants the time: “What time is it?”
+1) Client builds and sends JSON-RPC request:
+Method: A2AClient.send_task
+Payload includes a sessionId and a message with the user’s text.
+2) Server receives and routes:
+Method: A2AServer.handle_request
+Validates request, recognizes it as SendTaskRequest, calls the task manager’s on_send_task.
+3) Task Manager processes:
+Method: AgentTaskManager.on_send_task
+Extracts user text, calls TellTimeAgent.invoke(user_query, sessionId).
+Marks task COMPLETED, appends the agent’s reply to task history.
+4) Response returns to client:
+Method: A2AServer._create_response
+Sends back SendTaskResponse with the updated Task (including agent’s message, e.g., “2025-10-13 14:23:55”).
