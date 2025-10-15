@@ -40,7 +40,7 @@ def main(host: str, port: int):
         host (str): Hostname or IP to bind to (default: localhost)
         port (int): TCP port to listen on (default: 10001)
     """
-    print(f"\n🚀 Starting GreetingAgent on http://{host}:{port}/\n")
+    print(f"\nStarting GreetingAgent on http://{host}:{port}/\n")
 
 
     capabilities = AgentCapabilities(streaming=False)

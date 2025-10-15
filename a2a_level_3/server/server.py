@@ -10,14 +10,14 @@ from starlette.requests import Request #to handle incoming requests
 from models.agent import AgentCard
 from models.request import SendTaskRequest, A2ARequest
 from models.json_rpc import JSONRPCResponse, InternalError #for structured request/response handling
-from agents import task_manager
+from agents.host_agent import orchestrator
 import json
 import logging
 
 logger = logging.getLogger(__name__)
 
 class A2AServer:
-    def __init__(self, host="0.0.0.0", port=5000, agent_card: AgentCard=None, task_manager: task_manager = None):
+    def __init__(self, host="0.0.0.0", port=5000, agent_card: AgentCard=None, task_manager: orchestrator = None):
         self.host = host
         self.port = port
         self.agent_card = agent_card
