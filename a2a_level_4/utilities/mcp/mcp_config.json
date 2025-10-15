@@ -1,0 +1,10 @@
+{
+    "mcpServers": {
+        "filesystem": {
+            "command": "C:\\Users\\Rayan Zaitouni\\workspace\\A2A_MCP_Practice\\env\\Scripts\\python.exe",
+            "args": [
+                "C:\\Users\\Rayan Zaitouni\\workspace\\A2A_MCP_Practice\\a2a_level_4\\utilities\\mcp\\filesystem_server.py"
+            ]
+        }
+    }
+}
